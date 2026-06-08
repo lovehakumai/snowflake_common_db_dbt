@@ -1,0 +1,22 @@
+name: common_db
+
+profile: common_db
+
+seed-paths: ["seeds"]
+model-paths: ["models"]
+macro-paths: ["macros"]
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  # Builds seeds into '<your_schema_name>_raw'
+  jaffle_shop:
+    +schema: raw
+
+models:
+  common_db:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
